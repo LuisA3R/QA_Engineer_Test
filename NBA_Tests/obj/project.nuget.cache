@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "b6Oa6YKLLKKnBSs6LK7nLTHUvlewxlrd3fH6q56uN+wApDZiAlNnCpnOPiMBTS294TOzGNItkoS5qVneCs6igg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\KravMack\\Documents\\QA ENGINEER TEST\\NBATest_1\\NBATest_1\\NBA_Tests.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\KravMack\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\KravMack\\.nuget\\packages\\selenium.support\\4.9.1\\selenium.support.4.9.1.nupkg.sha512",
+    "C:\\Users\\KravMack\\.nuget\\packages\\selenium.webdriver\\4.9.1\\selenium.webdriver.4.9.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,467 @@
+{
+	"info": {
+		"_postman_id": "32d3b6ce-0d14-401a-82e9-194b4ca5374e",
+		"name": "QA test - SPOTIFY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18915252"
+	},
+	"item": [
+		{
+			"name": "Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/api/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for Item",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.spotify.com/v1/search?q=Llevarte a Marte&type=artist&market=ES&limit=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Llevarte a Marte"
+						},
+						{
+							"key": "type",
+							"value": "artist"
+						},
+						{
+							"key": "market",
+							"value": "ES"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Tracks to Playlist",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-read-private, playlist-modify-private, playlist-modify-public",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Auth_spotify",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "refreshRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "authRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"uris\": [\r\n    \"spotify:track:74fmYjFwt9CqEFAh8ybeBD\"\r\n  ]\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/5GzYVK2jTqk6jInsUCv88g/tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"5GzYVK2jTqk6jInsUCv88g",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Playlist Items",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-read-private, playlist-modify-private, playlist-modify-public",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Auth_spotify",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "refreshRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "authRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Playlist_QA2\",\r\n    \"description\": \"This is a test for QA\",\r\n    \"public\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/5GzYVK2jTqk6jInsUCv88g",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"5GzYVK2jTqk6jInsUCv88g"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Playlist Items",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-read-private, playlist-modify-private, playlist-modify-public",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Auth_spotify",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "refreshRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "authRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tracks\": [\r\n        {\r\n            \"uri\": \"spotify:track:74fmYjFwt9CqEFAh8ybeBD\"\r\n        }\r\n    ],\r\n    \"snapshot_id\": \"MTEsM2ZjOTIwNmUwNGFmMTYxMjQ0NzZmMGUwMTZiMTgyNDQ5NTg3ZWM0Yw==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/5GzYVK2jTqk6jInsUCv88g/tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"5GzYVK2jTqk6jInsUCv88g",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
